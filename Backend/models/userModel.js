@@ -18,6 +18,27 @@ const userSchema = mongoose.Schema({
     password:{
         type:String ,
         require:true
+    },
+    profilePic:{
+        type:String,
+        default:""
+    },
+    playList:[{
+        type: mongoose.Schema.Types.ObjectId, 
+        ref : "PlayList"
+    }],
+    fav:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref: "Song"
+    }],
+    createdAt:{
+        type:Date ,
+        default: Date.now
+    },
+    role:{
+        type:String ,
+        enum:["user" , "admin"] ,
+        default: "user"
     }
 })
 
